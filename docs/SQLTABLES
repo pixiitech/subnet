@@ -1,0 +1,25 @@
+CREATE TABLE Accounts (Idx int PRIMARY KEY AUTO_INCREMENT, Type varchar(11), Owner varchar(25), Name varchar(25), Address varchar(50), ContactName varchar(25), ContactPhone varchar(25), ContactEmail varchar(50), Fax varchar(25), PublicIP varchar(25), ISPInfo text, ParentAcct varchar(11), OfficePhone varchar(25), DomainName varchar(25), FullAccess text, ReadonlyAccess text, Archived int);
+
+CREATE TABLE DVR (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Description varchar(50));
+
+CREATE TABLE DVRChannel (Idx int PRIMARY KEY AUTO_INCREMENT, DVR int, Channel int, Name varchar(25), PTZType varchar(25), PTZAddress int, Notes varchar(50), Make varchar(25), Model varchar(25));
+
+CREATE TABLE Login (Username varchar (20), Password varchar(50), ColorScheme int, Level int, IsGroup int, MemberOf varchar(30), Name varchar(25), FieldWidth int);
+
+CREATE TABLE Note (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Title varchar(40), Info text);
+
+CREATE Table Subnet (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Type varchar(11), NetworkID varchar(25), Description varchar(25), SubnetMask varchar(25), PublicIP varchar(25), Gateway varchar(25), DNS1 varchar(25), DNS2 varchar(25), DHCPRange varchar(25));
+
+CREATE Table SubnetRecord (Idx int PRIMARY KEY AUTO_INCREMENT, Type int, Subnet int, Port int, Description varchar(25), IPNumber int, Make varchar(25), Model varchar(25), MAC varchar(25), Hostname varchar(25), Username varchar(40), Password varchar(40), Notes varchar(200), Location varchar(25), Parent varchar(11));
+
+CREATE TABLE User (Idx int PRIMARY KEY AUTO_INCREMENT, UserList int, Username varchar(25), Password varchar(25), Name varchar(25), Position varchar(25), Email varchar(50), EmailPass varchar(25), Phone varchar(25), Notes varchar(200));
+
+CREATE TABLE UserList (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Description varchar(25));
+
+CREATE TABLE Attachment (Idx int PRIMARY KEY AUTO_INCREMENT, Filename varchar(50), Description varchar(50), Account int);
+
+CREATE TABLE SoftwareLibrary (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Description varchar(25));
+
+CREATE TABLE Software (Idx int PRIMARY KEY AUTO_INCREMENT, SoftwareLibrary int, Description varchar(50), Username varchar(50), Password varchar(25), Developer varchar(25), SupportNum varchar(25), Website varchar(100), Serial varchar(50), LicenseKey varchar(50), InstalledOn text, Notes text);
+
+

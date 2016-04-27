@@ -1,0 +1,51 @@
+****************************Installation Instructions**************************
+I have tested the software with 3 platforms:
+A) Ubuntu 12.04
+B) Windows Server 2012
+C) Windows 8
+
+The software will work with other versions of Ubuntu or Kubuntu, Windows 7 and Windows Server 2008. 
+It will NOT work with Windows XP or Windows Server 2003 (these do not support PHP newer than 5.4)
+
+
+1. Install a web server package.
+   A) Ubuntu 12.04 / Apache
+   B) Windows Server 2012 / IIS 7
+   C) Windows 7 or 8 / EasyPHP
+	Go to http://www.easyphp.org/easyphp-devserver.php and download EasyPHP DevServer VC11 (or latest)
+	Install Package
+	Skip to step 4 (EasyPHP includes Apache, PHP and MySQL)
+
+
+2. Install PHP
+   A) Ubuntu 12.04 / Apache / PHP 5.5
+   B) Windows Server 2012 / IIS 7 / PHP 5.5
+
+3. Install MySQL
+   A) Ubuntu 12.04
+	Open a terminal window and type:
+	   sudo apt-get install mysql-server
+
+   B) Windows Server 2012
+
+4. Create Database
+   A) Ubuntu 12.04
+   B,C) Windows (any)
+
+5. Optimize jQuery
+   -Default (leave hosted link)
+   -Download and install
+
+6. Edit php.ini:
+	Change max_input_vars to 10000 (accounts with many records will fail to update)
+	Comment (add // to the beginning of) the open_basedir setting (attachments will otherwise not work in IIS)
+	Change upload_max_filesize to 10MB (or an appropriate value to accomodate uploads)
+
+7. Change permissions on backups and files directories to 777 (linux httpd) or Everyone/Full Access (IIS)
+
+8. (IIS Only) Edit MIME types for files directory to allow all appropriate file types to be uploaded (*, application/octet-stream)
+
+9. Reset web server
+    -Ubuntu / Apache
+    -Windows / IIS 7
+    -Windows / Apache

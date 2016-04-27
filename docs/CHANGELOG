@@ -1,0 +1,165 @@
+Version 1.1
+------------------------------
+- Removed unused fields (ParentRecord, Subnet2, Subnet3, Subnet4, DVR) from SubnetRecord table
+- Sorted subnet records by IP
+- Fixed bug when deleting records
+- Added Name to User record
+- Added color scheme changer option under Login Manager
+- Added icon for Wireless Bridge
+- Added 'New Device' text for the blank new Subnet Record
+
+Version 1.2
+-------------------------------
+- Changed Wireless AP and Wireless Bridge icons
+- Added Virtual Machine icon
+- After saving changes, screen stays on same table
+- Adjusted fonts of textareas
+- When creating an account, load the new account
+
+Version 1.3
+-------------------------------
+- Allowed apostrophes in Note fields
+- Allowed blank IP#s
+- Added search page
+- Added search field for account list
+- Added device options for TV, Modem, Laptop, UPS, Encoder
+DB Changes:
+Changed Accounts:ISPInfo to text
+Changed Note:Text to text
+Changed Accounts:ReadonlyAccess to text
+Changed Accounts:FullAccess to text
+Added Subnet:PublicIP
+
+Version 1.4
+-------------------------------
+- Changed Menus
+- Added Mass Data page
+
+Version 1.5
+-------------------------------
+- Added search by account to search page
+- Added clear button to search page
+- Renamed Tab option to Restore Mode in backup screen
+
+Version 1.6
+-------------------------------
+- Changed 'Owner Name' in login manager to 'Name'
+- Fixed textarea update bug
+- Adjusted css files to fit text on screen
+- Color schemes now change instantly
+DB Changes:
+Added Table Attachment:
+Attachment (Idx int PRIMARY KEY AUTO_INCREMENT, Filename varchar(50), Description varchar(50), Account int);
+
+Version 1.7
+-------------------------------
+- Added IP Audio, VoIP Phone, Mobile Device, Projector device types
+- Added Contact Email and Fax to Accounts
+- Added action menu to subnet records:
+	Delete
+	Move to subnet
+	Link to other device
+- Added parent/child device linkages within a subnet
+DB Changes:
+Added Accounts:ContactEmail varchar(25)
+	      :Fax varchar(50)
+Added SubnetRecord:Parent int(11)
+Update DB with SQL statement: UPDATE SubnetRecord SET Parent = Idx
+
+Version 1.7.1
+-------------------------------
+- Fixed bug where Parent did not get updated with IPNumber for top level items
+- Added hover text showing Type and full IP address for subnet records and search results
+
+Version 1.8
+-------------------------------
+- Added submenu for navigating sections
+- Allowed for creating a range of similar devices
+- Revised color schemes and fonts (common css file)
+- Added devices types: Alt. NIC, POS
+- Added account access control
+    - Each account can individually be set for Full or Read only access on a per user basis
+- Widened text fields in main view and search
+- Fixed table bugs
+- Added 'Return to Top' link
+
+Version 1.8.1
+------------------------------
+- Fixed color scheme dropdown for new user in loginmgr
+- Allowed access to loginmgr for non-admins to change their own settings
+- Allowed all admins to create, promote and demote all users
+- Added field width option in loginmgr
+- Allowed users with full access to delete accounts
+- Added size column to attachments
+DB Changes:
+Added Login:FieldWidth int
+
+Version 1.9
+------------------------------
+- Replaced 'Delete' checkboxes from tables with button and JavaScript prompt
+- Added 'Add' buttons to tables so 'New' records are not shown until button is pressed
+- Utilized jQuery fade in when showing new record rows
+- Centered 'Save' button on Account Access
+- Added full screen item editor for more advanced subnet record editing
+- Added software libraries as a separate table
+- Added full screen item editor for software (allows "installing" one software on multiple computers)
+- Removed 'Software' subnet record type
+- When using the 'New' account option, uses search field as new name
+- Made 'search accounts' field wider
+- Added unsaved changes warning
+DB Changes:
+Added SoftwareLibrary (Idx int PRIMARY KEY AUTO_INCREMENT, Account int, Description varchar(25));
+Added Software (Idx int PRIMARY KEY AUTO_INCREMENT, SoftwareLibrary int, Description varchar(50), Username varchar(25), Password varchar(25), Developer varchar(25), SupportNum varchar(25), Website varchar(100), Serial varchar(50), LicenseKey varchar(50), InstalledOn text, Notes text);
+
+Version 1.10
+-----------------------------
+Added Account manager
+Allowed for archiving accounts using Type field
+Allowed double-clicking on account and section lists to open items
+Changed icons
+Added sorting capabilities by clicking column headers
+Added links in Device Editor to open web interfaces of device
+
+Version 1.11
+-----------------------------
+Fixed column bug with adding a new subnet record
+Allowing apostrophes in input fields for Subnets, DVRs, Userlists, and Software by changing ' to \" in subnet.php
+Added new Subnet general fields: Gateway, DNS1, DNS2 and DHCP Range
+Lengthened Username and Password fields and Note titles
+Shrank account access icon
+Device editor: Changed device web interface link to open in new tab
+Acct Manager: Added edit icons, sorting capability
+Search: Widened IP# field, added edit icons
+
+
+DB Changes:
+Changed SubnetRecord:Username to varchar(40);
+Changed SubnetRecord:Password to varchar(40);
+Changed Note:Title to varchar(40);
+Added Subnet:Gateway varchar(25)
+Added Subnet:DNS1 varchar(25)
+Added Subnet:DNS2 varchar(25)
+Added Subnet:DHCPRange varchar(40)
+
+Version 1.12
+-----------------------------
+Login Mgr: Added user groups
+Login Mgr: Made user table sortable by Username
+Login Mgr: Users only see their own info now - renamed menu link to 'Profile'
+Main: Account Access now shows group names in brackets
+Main: Device image now changes immediately after change in Type dropdown box
+All modules: updated authentication checks to check for group access privileges
+
+DB Changes:
+Added Login: IsGroup int
+Added Login: MemberOf varchar(30)
+
+Version 1.13
+-----------------------------
+Login Mgr: Changed to display 'Profile' for non-admins
+Login Mgr: Removed 'Delete User' header for non-admins
+Login Mgr: Added old password, confirm password boxes when changing users' own password
+DB Changes:
+Changed Accounts: ParentAcct int -> ParentAcct varchar(11)
+
+

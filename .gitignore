@@ -1,0 +1,8 @@
+# Ignore gedit tilde files
+*~
+
+# Ignore backups
+backups/*
+
+# Ignore attachments
+files/*
